@@ -1,0 +1,2986 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>WEDDING ITALY RESIDENCE - Matrimoni di lusso in Italia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Inter:wght@300;400;500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== ВЕСЬ CSS ИЗ index.html ПОЛНОСТЬЮ ===== */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        :root {
+            --gold: #D4A574;
+            --gold-light: #e8d9cc;
+            --dark: #1a1a1a;
+            --light: #f8f6f3;
+            --text: #2c2c2c;
+            --text-light: #6b6560;
+            --shadow: 0 20px 60px rgba(0,0,0,0.1);
+            --shadow-hover: 0 30px 80px rgba(0,0,0,0.15);
+            --gradient-gold: linear-gradient(135deg, var(--gold) 0%, #e6b800 100%);
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.7; 
+            color: var(--text);
+            background: var(--light);
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: 'Playfair Display', serif; 
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            text-decoration: none;
+            line-height: 1;
+            text-align: center;
+            flex-shrink: 0;
+            width: min(220px, 40vw);
+            z-index: 1001;
+        }
+        
+        .logo .wedding {
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
+            background: linear-gradient(45deg, var(--dark), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin: 0 auto 0.1rem auto;
+            white-space: nowrap;
+        }
+        
+        .logo .italy-residence {
+            font-size: clamp(0.5rem, 1.8vw, 0.8rem);
+            color: rgba(107, 101, 96, 0.8);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin: 0 auto;
+            display: block;
+            white-space: nowrap;
+        }
+
+        /* ДЕСКТОП - просто слово MENU */
+        .desktop-menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            padding: 10px 0;
+            z-index: 1001;
+        }
+        
+        .desktop-menu-btn:hover {
+            color: var(--gold);
+        }
+        
+        .desktop-menu-icon {
+            display: none;
+        }
+
+        /* МОБИЛКА - гамбургер */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+            padding: 10px 4px;
+            z-index: 1002;
+            position: relative;
+        }
+        
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger:hover span {
+            background: var(--gold);
+        }
+
+        /* Социальные иконки */
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: clamp(8px, 2vw, 12px);
+            z-index: 1001;
+        }
+        
+        .social-icons a {
+            width: clamp(32px, 5vw, 36px);
+            height: clamp(32px, 5vw, 36px);
+            background: var(--light);
+            border: 1px solid rgba(212,165,116,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+        
+        .social-icons a:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212,165,116,0.4);
+        }
+
+        /* Header Right */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.8rem, 2.5vw, 2rem);
+            position: relative;
+        }
+
+        /* ВЫПАДАЮЩИЕ МЕНЮ - ТОЛЬКО HOVER */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255,255,255,0.98);
+            min-width: min(220px, 90vw);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212,165,116,0.2);
+            flex-direction: column;
+            padding: 1rem 0;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        /* Hover для десктоп меню - через родительский контейнер */
+        .menu-hover-container:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        
+        .dropdown-menu a {
+            color: var(--text);
+            padding: clamp(12px, 3vw, 14px) clamp(20px, 4vw, 24px);
+            text-decoration: none;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            transition: all 0.3s ease;
+            display: block;
+            border-bottom: 1px solid rgba(212,165,116,0.1);
+            white-space: nowrap;
+        }
+        
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-menu a:hover {
+            background: rgba(212,165,116,0.15);
+            color: var(--gold);
+            padding-left: clamp(25px, 5vw, 30px);
+        }
+
+        /* Контейнер для hover меню */
+        .menu-hover-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Контейнер для дропдауна языков с hover эффектом как у MENU */
+        .lang-hover-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+        }
+
+        .lang-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--gold);
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(212,165,116,0.3);
+        }
+
+        .lang-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255,255,255,0.98);
+            min-width: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212,165,116,0.2);
+            flex-direction: column;
+            padding: 0.5rem;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .lang-hover-container:hover .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .lang-dropdown-item {
+            display: block;
+            width: 50px;
+            height: 50px;
+            padding: 5px;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(212,165,116,0.1);
+            border-radius: 8px;
+        }
+
+        .lang-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(212,165,116,0.15);
+            transform: scale(1.05);
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--gold);
+        }
+
+        .lang-dropdown-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Hero секция с фоновыми изображениями */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: clamp(80px, 12vh, 140px) 0 clamp(60px, 8vh, 100px);
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        /* Слайдер фоновых изображений */
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        /* Затемнение для лучшей читаемости текста */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 100%;
+            width: 100%;
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        /* Контейнер для заголовка */
+        .hero-title-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: clamp(1.5rem, 4vh, 3.5rem);
+        }
+        
+        /* Адаптивное название */
+        .hero-content h1 {
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: white;
+            opacity: 0;
+            animation: fadeInUp 1.2s 0.3s forwards;
+            line-height: 1.1;
+            text-align: center;
+            max-width: 100%;
+            margin: 0 auto;
+            white-space: nowrap;
+            font-size: clamp(2rem, 8vw, 7rem);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        @media (min-width: 2500px) {
+            .hero-content h1 {
+                font-size: 8rem;
+            }
+        }
+        
+        @media (min-width: 1920px) and (max-width: 2499px) {
+            .hero-content h1 {
+                font-size: 7rem;
+            }
+        }
+        
+        @media (max-width: 1023px) {
+            .hero-content h1 {
+                font-size: clamp(2.8rem, 7vw, 4rem);
+                white-space: normal;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            }
+        }
+        
+        .hero-text-center {
+            position: relative;
+            max-width: min(800px, 90vw);
+            margin: 0 auto clamp(2rem, 5vh, 4rem) auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        
+        .hero-text-center::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(60px, 12vw);
+            height: 1.5px;
+            background: rgba(255,255,255,0.7);
+            transition: all 0.4s;
+            border-radius: 1px;
+        }
+        
+        .hero-text-center::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(60px, 12vw);
+            height: 1.5px;
+            background: rgba(255,255,255,0.7);
+            transition: all 0.4s;
+            border-radius: 1px;
+        }
+        
+        .hero-text-center:hover::before,
+        .hero-text-center:hover::after {
+            width: min(650px, 80vw);
+            background: var(--gold);
+            box-shadow: 0 0 20px rgba(212,165,116,0.4);
+        }
+        
+        .hero-subtitle {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-subtitle p {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(0.8rem, 2.2vw, 1.3rem);
+            font-weight: 300;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.05em;
+            text-align: center;
+            margin: 0;
+            text-transform: uppercase;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeInUp 1.2s 0.6s forwards;
+            word-break: break-word;
+            max-width: 100%;
+            padding: 0 10px;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-subtitle p br {
+                display: inline;
+            }
+        }
+        
+        .cta-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(160px, 25vw, 250px);
+            height: clamp(45px, 6vh, 70px);
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            transition: all 0.4s;
+            opacity: 0;
+            animation: fadeInUp 1.2s 0.9s forwards;
+            box-shadow: var(--shadow);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(0.7rem, 1.8vw, 1rem);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 2px solid transparent;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.5s;
+        }
+        
+        .cta:hover {
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 25px 60px rgba(212,165,116,0.5);
+            background: transparent;
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        .cta:hover::before { 
+            left: 100%; 
+        }
+
+        /* About Us секция */
+        .section { 
+            padding: clamp(50px, 10vh, 160px) clamp(1.5rem, 4vw, 6%); 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            width: 100%;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: clamp(2rem, 5vh, 4rem);
+            letter-spacing: 0.1em;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s;
+            word-break: break-word;
+            padding: 0 10px;
+            position: relative;
+            text-transform: uppercase;
+        }
+        
+        .section.visible .section-title { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        .section-title span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        
+        /* About Us контейнер */
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s 0.2s;
+            width: 100%;
+        }
+        
+        .section.visible .about-container { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        .about-text-wrapper {
+            position: relative;
+            max-width: min(900px, 95vw);
+            margin: 0 auto clamp(2rem, 5vh, 4rem) auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        
+        .about-text-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(60px, 12vw);
+            height: 2px;
+            background: rgba(212,165,116,0.5);
+            transition: all 0.4s;
+            border-radius: 1px;
+        }
+        
+        .about-text-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(60px, 12vw);
+            height: 2px;
+            background: rgba(212,165,116,0.5);
+            transition: all 0.4s;
+            border-radius: 1px;
+        }
+        
+        .about-text-wrapper:hover::before,
+        .about-text-wrapper:hover::after {
+            width: min(750px, 85vw);
+            background: var(--gold);
+            box-shadow: 0 0 20px rgba(212,165,116,0.4);
+        }
+        
+        .about-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 2.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.8rem;
+        }
+        
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .about-text .highlight {
+            color: var(--gold);
+            font-weight: 500;
+            font-style: normal;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text .highlight:hover {
+            transform: scale(1.02);
+            text-shadow: 0 0 8px rgba(212,165,116,0.3);
+        }
+        
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            padding: 12px 0;
+            position: relative;
+            text-decoration: none;
+            border-bottom: 2px solid var(--gold);
+            margin-top: 2rem;
+        }
+        
+        .read-more-btn i {
+            color: var(--gold);
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more-btn:hover {
+            color: var(--gold);
+            gap: 16px;
+        }
+        
+        .read-more-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* WE LIVE FOR LOVE секция */
+        .love-section {
+            padding: clamp(50px, 10vh, 160px) clamp(1.5rem, 4vw, 6%);
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .love-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .love-header h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        
+        .love-header h2 span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        
+        .love-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+        
+        .love-description {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-light);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        
+        .love-description p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Карточки - РАЗНЫЕ РАЗМЕРЫ */
+        .cards {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .card {
+            background-color: #fff;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0px 15px 25px -8px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s forwards;
+            cursor: pointer;
+            flex: 1 1 auto;
+        }
+        
+        .card:nth-child(1) {
+            animation-delay: 0.3s;
+            max-width: 280px;
+        }
+        
+        .card:nth-child(2) {
+            animation-delay: 0.5s;
+            max-width: 280px;
+        }
+        
+        .card:nth-child(3) {
+            animation-delay: 0.7s;
+            max-width: 380px;
+        }
+        
+        .card:hover {
+            box-shadow: 0px 40px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(1.15) translateY(-15px);
+            z-index: 10;
+        }
+        
+        .card:nth-child(1) .card__img,
+        .card:nth-child(2) .card__img {
+            height: 380px;
+        }
+        
+        .card:nth-child(3) .card__img {
+            height: 420px;
+        }
+        
+        .card__img {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            transition: all 0.7s ease;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .card:hover .card__img {
+            transform: scale(1.3);
+        }
+        
+        .card__img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .card:hover .card__img::after {
+            opacity: 1;
+        }
+        
+        .card__info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+            color: white;
+            padding: 2rem 1.5rem 1.8rem;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(2px);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        
+        .card:hover .card__info {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+            backdrop-filter: blur(4px);
+        }
+        
+        .card__title {
+            font-size: 2rem;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 0.8rem;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.08em;
+            position: relative;
+            display: inline-block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .card__title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+        
+        .card:hover .card__title::after {
+            width: 100%;
+        }
+        
+        .card__quote {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            margin: 0.8rem 0 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .card__quote i {
+            color: var(--gold);
+            margin-right: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .card--1 .card__img {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%), url('images/index/today.jpg');
+        }
+        
+        .card--2 .card__img {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%), url('images/index/tomorrow.jpg');
+        }
+        
+        .card--3 .card__img {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%), url('images/index/forever.jpg');
+        }
+        
+        .love-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .love-cta .cta {
+            display: inline-flex;
+            width: auto;
+            padding: 0 3rem;
+            animation: fadeInUp 1s 0.9s forwards;
+            opacity: 0;
+        }
+
+        /* PROJECTS секция */
+        .projects-section {
+            padding: 0 clamp(1.5rem, 4vw, 6%) clamp(50px, 10vh, 160px);
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .projects-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .projects-header h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        
+        .projects-header h2 span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        
+        .projects-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+        
+        .projects-subtitle {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-light);
+            line-height: 1.8;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        /* Сетка проектов */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .project-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s forwards;
+            aspect-ratio: 3/4;
+        }
+        
+        .project-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .project-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .project-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .project-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.2) translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.7s ease;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+        
+        .project-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem;
+            color: white;
+            z-index: 2;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-info {
+            transform: translateY(-5px);
+        }
+        
+        .project-info h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.05em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .project-1 .project-img {
+            background-image: url('images/index/project-1.jpg');
+        }
+        
+        .project-2 .project-img {
+            background-image: url('images/index/project-2.jpg');
+        }
+        
+        .project-3 .project-img {
+            background-image: url('images/index/project-3.jpg');
+        }
+        
+        .project-4 .project-img {
+            background-image: url('images/index/project-4.jpg');
+        }
+
+        /* Галерея с 19 фотографиями */
+        .gallery-section {
+            padding: 0 clamp(1.5rem, 4vw, 6%) 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-header h2 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        
+        .gallery-header h2 span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        
+        .gallery-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+        
+        .gallery-header p {
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            z-index: 10;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+            content: '\f00e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            color: white;
+            font-size: 2rem;
+            background: rgba(212,165,116,0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .gallery-item:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        /* Модальное окно */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+        
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+        
+        .modal-close:hover {
+            color: var(--gold);
+            transform: rotate(90deg);
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 3rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            z-index: 2001;
+        }
+        
+        .modal-nav:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .modal-nav.prev {
+            left: 20px;
+        }
+        
+        .modal-nav.next {
+            right: 20px;
+        }
+        
+        .modal-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* SERVICES секция */
+        .services-section {
+            padding: clamp(50px, 10vh, 160px) clamp(1.5rem, 4vw, 6%);
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .services-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .services-header h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        
+        .services-header h2 span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        
+        .services-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+        
+        .services-subtitle {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-light);
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(212,165,116,0.1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s forwards;
+        }
+        
+        .service-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .service-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .service-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .service-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            opacity: 0.03;
+            transition: all 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scale(1.5);
+            opacity: 0.05;
+        }
+        
+        .service-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: rgba(212,165,116,0.2);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-number {
+            color: rgba(212,165,116,0.4);
+            transform: scale(1.2);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(212,165,116,0.1) 0%, rgba(212,165,116,0.2) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--gold);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            background: var(--gold);
+            transform: rotate(5deg);
+        }
+        
+        .service-card:hover .service-icon i {
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .service-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+        
+        .service-card:hover h3::after {
+            width: 100%;
+        }
+        
+        .service-description {
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .service-description p {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        
+        .service-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ENJOY секция */
+        .enjoy-section {
+            padding: clamp(50px, 10vh, 160px) clamp(1.5rem, 4vw, 6%);
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .enjoy-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+        
+        .enjoy-content {
+            padding-right: 2rem;
+        }
+        
+        .enjoy-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            color: var(--dark);
+        }
+        
+        .enjoy-content h2 span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        
+        .enjoy-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-style: italic;
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+        }
+        
+        .enjoy-image {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            aspect-ratio: 4/3;
+        }
+        
+        .enjoy-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .enjoy-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .enjoy-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            transition: all 0.5s ease;
+        }
+        
+        .enjoy-image::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+            transition: all 0.5s ease;
+        }
+        
+        .enjoy-image:hover::before {
+            top: -30px;
+            left: -30px;
+            opacity: 0.5;
+        }
+        
+        .enjoy-image:hover::after {
+            bottom: -30px;
+            right: -30px;
+            opacity: 0.4;
+        }
+
+        /* START PLANNING секция */
+        .planning-section {
+            padding: clamp(50px, 10vh, 160px) clamp(1.5rem, 4vw, 6%);
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .planning-content {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .planning-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .planning-content h2 span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        
+        .planning-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .planning-content .cta {
+            display: inline-flex;
+            width: auto;
+            padding: 0 3rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 4rem 5% 2rem;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 2rem;
+        }
+        
+        .footer-menu {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .footer-menu h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .footer-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-menu li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-menu a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-menu a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+        
+        .footer-logo-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        
+        .rotating-logo {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo-image {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .rotating-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rotate 20s linear infinite;
+            z-index: 1;
+        }
+        
+        .rotating-text circle {
+            fill: transparent;
+        }
+        
+        .rotating-text text {
+            font-size: 9px;
+            fill: var(--gold);
+            letter-spacing: 2.3;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .footer-contact {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .footer-contact h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .office-hours {
+            margin-bottom: 1.5rem;
+        }
+        
+        .office-hours p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .office-hours .days {
+            color: white;
+            font-weight: 500;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-social-icons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        
+        .footer-social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(212,165,116,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .footer-social-icons a:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212,165,116,0.4);
+        }
+
+        /* Переключатель языков в футере - значки */
+        .footer-lang-switcher {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+        
+        .footer-lang-switcher a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .footer-lang-switcher a:hover {
+            transform: scale(1.1);
+            opacity: 1;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212,165,116,0.5);
+        }
+        
+        .footer-lang-switcher a.active {
+            opacity: 1;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212,165,116,0.5);
+        }
+        
+        .footer-lang-switcher img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .offices-compact {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            align-items: flex-start;
+        }
+        
+        .office-compact {
+            flex: 1;
+            border-radius: 12px;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            background: transparent;
+            min-width: 0;
+        }
+        
+        .office-compact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 0.3rem;
+        }
+        
+        .office-compact-header h4 {
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .compact-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        
+        .office-compact.active .compact-toggle-btn {
+            transform: rotate(180deg);
+        }
+        
+        .office-cities-compact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem 0.4rem;
+            margin-bottom: 0.2rem;
+            min-height: 20px;
+        }
+        
+        .city-tag-compact {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.7rem;
+            padding: 0;
+            border: none;
+            background: transparent;
+            white-space: nowrap;
+        }
+        
+        .city-tag-compact:not(:last-child)::after {
+            content: "•";
+            margin-left: 0.2rem;
+            margin-right: 0.2rem;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+        
+        .office-details-compact {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-top: 0;
+            font-size: 0.75rem;
+            width: 100%;
+        }
+        
+        .office-compact.active .office-details-compact {
+            max-height: 80px;
+            padding: 0.3rem 0 0;
+        }
+        
+        .office-details-compact p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 0.2rem;
+            font-size: 0.7rem;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .office-details-compact a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .office-details-compact i {
+            width: 12px;
+            color: var(--gold);
+            font-size: 0.7rem;
+            margin-right: 4px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.8;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 1rem;
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 0.3rem;
+        }
+        
+        .footer-bottom a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--gold);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* МЕДИА ЗАПРОСЫ */
+        @media (max-width: 1024px) {
+            .desktop-menu-btn {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            
+            .cards {
+                gap: 1.5rem;
+            }
+            
+            .card:nth-child(1),
+            .card:nth-child(2),
+            .card:nth-child(3) {
+                max-width: calc(50% - 0.75rem);
+                flex: 1 1 calc(50% - 0.75rem);
+            }
+            
+            .card:nth-child(1) .card__img,
+            .card:nth-child(2) .card__img,
+            .card:nth-child(3) .card__img {
+                height: 350px;
+            }
+            
+            .card:hover {
+                transform: scale(1.1) translateY(-10px);
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .services-grid {
+                gap: 1.5rem;
+            }
+            
+            .enjoy-container {
+                gap: 2rem;
+            }
+            
+            .footer-top {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .footer-menu,
+            .footer-contact {
+                text-align: center;
+                width: 100%;
+            }
+            
+            .footer-menu ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            
+            .footer-menu li {
+                margin-bottom: 0;
+            }
+            
+            .footer-social-icons {
+                justify-content: center;
+            }
+            
+            .footer-lang-switcher {
+                justify-content: center;
+            }
+            
+            .offices-compact {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .office-compact {
+                width: 100%;
+            }
+            
+            .footer-logo-center {
+                height: 180px;
+            }
+            
+            .rotating-logo {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .logo-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header { 
+                padding: 1rem 4%; 
+            }
+            
+            .header-right { 
+                gap: 0.8rem; 
+            }
+            
+            .section { 
+                padding: 45px 4%; 
+            }
+            
+            .love-section,
+            .projects-section,
+            .gallery-section,
+            .services-section,
+            .enjoy-section,
+            .planning-section {
+                padding: 45px 4%;
+            }
+            
+            .hero { 
+                padding: 90px 0 50px; 
+            }
+            
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card:nth-child(1),
+            .card:nth-child(2),
+            .card:nth-child(3) {
+                max-width: 400px;
+                width: 100%;
+            }
+            
+            .card:nth-child(1) .card__img,
+            .card:nth-child(2) .card__img,
+            .card:nth-child(3) .card__img {
+                height: 400px;
+            }
+            
+            .card:hover {
+                transform: scale(1.08) translateY(-8px);
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
+            
+            .modal-nav.prev {
+                left: 10px;
+            }
+            
+            .modal-nav.next {
+                right: 10px;
+            }
+            
+            .enjoy-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .enjoy-content {
+                padding-right: 0;
+                text-align: center;
+            }
+            
+            .enjoy-content p {
+                border-left: none;
+                padding-left: 0;
+                border-top: 3px solid var(--gold);
+                padding-top: 1.5rem;
+            }
+            
+            .planning-content h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-menu ul {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .footer-logo-center {
+                height: 160px;
+            }
+            
+            .rotating-logo {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .logo-image {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .rotating-text text {
+                font-size: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header { 
+                padding: 0.8rem 3%; 
+            }
+            
+            .logo { 
+                width: min(140px, 30vw); 
+            }
+            
+            .logo .wedding {
+                font-size: clamp(1rem, 3.5vw, 1.2rem);
+            }
+            
+            .logo .italy-residence {
+                font-size: clamp(0.45rem, 1.5vw, 0.55rem);
+                letter-spacing: 1px;
+            }
+            
+            .header-right { 
+                gap: 0.6rem; 
+            }
+            
+            .social-icons a {
+                width: 28px;
+                height: 28px;
+                font-size: 0.7rem;
+            }
+            
+            .lang-hover-container .lang-btn {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .lang-dropdown-item {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .hero-text-center {
+                margin-bottom: 2rem;
+            }
+            
+            .hero-text-center::before,
+            .hero-text-center::after {
+                width: 35px;
+            }
+            
+            .about-text-wrapper::before,
+            .about-text-wrapper::after {
+                width: 35px;
+            }
+            
+            .card__img {
+                height: 350px;
+            }
+            
+            .card__title {
+                font-size: 1.8rem;
+            }
+            
+            .project-info h3 {
+                font-size: 1.3rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .service-card h3 {
+                font-size: 1.5rem;
+            }
+            
+            .service-number {
+                font-size: 2.5rem;
+            }
+            
+            .enjoy-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-lang-switcher a {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .footer-logo-center {
+                height: 140px;
+            }
+            
+            .rotating-logo {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .logo-image {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .footer-menu ul {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+
+        /* Стили для скролла */
+        ::-webkit-scrollbar { 
+            width: 5px; 
+        }
+        
+        ::-webkit-scrollbar-track { 
+            background: var(--light); 
+        }
+        
+        ::-webkit-scrollbar-thumb { 
+            background: var(--gold); 
+            border-radius: 4px; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index_it.html" class="logo">
+            <span class="wedding">WEDDING</span>
+            <span class="italy-residence">ITALY RESIDENCE</span>
+        </a>
+        
+        <div class="header-right">
+            <div class="menu-hover-container">
+                <button class="desktop-menu-btn" id="desktopMenuBtn">
+                    <span class="desktop-menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    MENU
+                </button>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index_it.html">Home</a>
+                    <a href="about_it.html">Chi siamo</a>
+                    <a href="live-painting_it.html">Pittura dal vivo</a>
+                    <a href="our-services_it.html">Servizi</a>
+                    <a href="contact_it.html">Contatti</a>
+                </nav>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://uk.pinterest.com/ideas/italy-wedding-villas/899959421189/" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.instagram.com/eternalmomentsweddingplanner" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/anastasiiasamitaly" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://wa.me/393420032178" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                
+                <!-- Дропдаун языков - ИТАЛЬЯНСКАЯ ВЕРСИЯ -->
+                <div class="lang-hover-container">
+                    <button class="lang-btn">
+                        <img src="images/flags/it.png" alt="IT">
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="index.html" class="lang-dropdown-item">
+                            <img src="images/flags/en.png" alt="EN">
+                        </a>
+                        <a href="index_it.html" class="lang-dropdown-item active">
+                            <img src="images/flags/it.png" alt="IT">
+                        </a>
+                        <a href="index_ru.html" class="lang-dropdown-item">
+                            <img src="images/flags/ru.png" alt="RU">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero секция с фоновым слайдером -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('images/index/hero-1.jpg');"></div>
+            <div class="slide" style="background-image: url('images/index/hero-2.jpg');"></div>
+            <div class="slide" style="background-image: url('images/index/hero-3.jpg');"></div>
+            <div class="slide" style="background-image: url('images/index/hero-4.jpg');"></div>
+            <div class="slide" style="background-image: url('images/index/hero-5.jpg');"></div>
+            <div class="slide" style="background-image: url('images/index/hero-6.jpg');"></div>
+            <div class="slide" style="background-image: url('images/index/hero-7.jpg');"></div>
+            <div class="slide" style="background-image: url('images/index/hero-8.jpg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="hero-title-wrapper">
+                <h1>WEDDING ITALY RESIDENCE</h1>
+            </div>
+            <div class="hero-text-center">
+                <div class="hero-subtitle">
+                    <p>Benvenuti nel luogo dove il vostro <br>PER SEMPRE inizia — Wedding Italy Residence</p>
+                </div>
+            </div>
+            <div class="cta-wrapper">
+                <a href="contact_it.html" class="cta">CONTATTACI</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us секция -->
+    <section class="section" id="about">
+        <h2 class="section-title">Chi <span>siamo</span></h2>
+        
+        <div class="about-container">
+            <div class="about-text-wrapper">
+                <div class="about-text">
+                    <p>Un'agenzia di consulenza e direzione creativa specializzata in matrimoni ed eventi di lusso su misura in <span class="highlight">Italia</span>, <span class="highlight">Costa Azzurra</span>, <span class="highlight">Monte Carlo</span>, <span class="highlight">Mosca</span>, <span class="highlight">Dubai</span> e <span class="highlight">Miami</span>.</p>
+                    
+                    <p>Supportiamo coppie internazionali alla ricerca di un'eleganza autentica e consapevole, espressa attraverso un'estetica minimalista, poetica e naturalmente sofisticata.</p>
+                </div>
+            </div>
+            
+            <a href="about_it.html" class="read-more-btn">
+                SCOPRI DI PIÙ <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- WE LIVE FOR LOVE секция -->
+    <section class="love-section" id="love">
+        <div class="love-header">
+            <h2>VIVIAMO PER <span>L'AMORE</span></h2>
+            <div class="love-description">
+                <p>Non importa come immagini il matrimonio dei tuoi sogni, ti guideremo verso la location perfetta. Non è facile scegliere il luogo ideale per dire 'Sì' — che sia sulla Costa Azzurra con i suoi tramonti mozzafiato, in una villa storica sul Lago di Como o in Toscana, nel deserto di Dubai o in un hotel di lusso a Miami. La cosa più bella è avere accanto le persone care in momenti così importanti. Noi siamo qui per aiutarti a trovare la location perfetta.</p>
+            </div>
+        </div>
+        
+        <div class="cards">
+            <article class="card card--1">
+                <div class="card__img"></div>
+                <div class="card__info">
+                    <h3 class="card__title">OGGI</h3>
+                    <div class="card__quote">
+                        <i class="fas fa-quote-left"></i> Ieri è andato, domani non è ancora arrivato. Abbiamo solo oggi. Cominciamo — Madre Teresa
+                    </div>
+                </div>
+            </article>
+            
+            <article class="card card--2">
+                <div class="card__img"></div>
+                <div class="card__info">
+                    <h3 class="card__title">DOMANI</h3>
+                    <div class="card__quote">
+                        <i class="fas fa-quote-left"></i> Preferirei passare una vita con te piuttosto che affrontare tutte le ere di questo mondo da solo — J.R.R. Tolkien
+                    </div>
+                </div>
+            </article>
+            
+            <article class="card card--3">
+                <div class="card__img"></div>
+                <div class="card__info">
+                    <h3 class="card__title">PER SEMPRE</h3>
+                    <div class="card__quote">
+                        <i class="fas fa-quote-left"></i> L'amore non guarda con gli occhi, ma con la mente, per questo Cupido alato viene dipinto cieco — William Shakespeare
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="love-cta">
+            <a href="contact_it.html" class="cta">CONTATTACI</a>
+        </div>
+    </section>
+
+    <!-- PROJECTS секция -->
+    <section class="projects-section" id="projects">
+        <div class="projects-header">
+            <h2>ALCUNI <span>PROGETTI</span></h2>
+            <div class="projects-subtitle">
+                Un viaggio nel nostro universo. Frammenti di bellezza accuratamente selezionati da mille storie di vita
+            </div>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card project-1">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h3>Fughe romantiche in Italia</h3>
+                </div>
+            </div>
+            
+            <div class="project-card project-2">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h3>Sogni sul mare</h3>
+                </div>
+            </div>
+            
+            <div class="project-card project-3">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h3>Eleganza negli interni</h3>
+                </div>
+            </div>
+            
+            <div class="project-card project-4">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h3>Matrimoni nel mondo</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея с 19 фотографиями -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header">
+            <h2>UNA PICCOLA GALLERIA <span>DEI NOSTRI LAVORI</span></h2>
+            <p>Uno sguardo ai momenti che abbiamo catturato e ai ricordi che abbiamo contribuito a creare</p>
+        </div>
+        
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Галерея будет заполнена через JavaScript -->
+        </div>
+    </section>
+
+    <!-- Модальное окно для галереи -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <button class="modal-nav prev" id="modalPrev"><i class="fas fa-chevron-left"></i></button>
+            <img class="modal-image" id="modalImage" src="" alt="Immagine della galleria">
+            <button class="modal-nav next" id="modalNext"><i class="fas fa-chevron-right"></i></button>
+            <div class="modal-counter" id="modalCounter"></div>
+        </div>
+    </div>
+
+    <!-- SERVICES секция -->
+    <section class="services-section" id="services">
+        <div class="services-header">
+            <h2>SERVIZI</h2>
+            <div class="services-subtitle">Scegli l'opzione più adatta a te</div>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-number">01</div>
+                <div class="service-icon">
+                    <i class="fas fa-pen-fancy"></i>
+                </div>
+                <h3>Cartoleria e pittura dal vivo</h3>
+                <div class="service-description">
+                    <p>Cartoleria artigianale realizzata con cura e attenzione ai dettagli, inclusi inviti, menu e altri elementi dell'evento.</p>
+                    <p>Offriamo anche l'esperienza unica della pittura dal vivo durante il vostro evento, creando opere d'arte uniche che gli ospiti possono vedere nascere in tempo reale.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-number">02</div>
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Concept & Design</h3>
+                <div class="service-description">
+                    <p>Ti aiutiamo a definire la visione e lo stile del tuo evento, creando concept coerenti con tavolozze di colori attentamente selezionate, moodboard e la location perfetta.</p>
+                    <p>Questa fase garantisce che ogni elemento rifletta la tua personalità e crei l'atmosfera per un'esperienza indimenticabile.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-number">03</div>
+                <div class="service-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Pianificazione e fornitori fidati</h3>
+                <div class="service-description">
+                    <p>Trasformiamo la tua visione in un piano solido, selezionando attentamente fornitori affidabili ed esperti per soddisfare le tue esigenze.</p>
+                    <p>Dai fioristi ai musicisti, fotografi e altro ancora, coordiniamo ogni dettaglio così tu puoi rilassarti e goderti il processo di pianificazione.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-number">04</div>
+                <div class="service-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Gestione completa dell'evento</h3>
+                <div class="service-description">
+                    <p>Un approccio completo e pratico in cui gestiamo tutta la logistica, i trasporti, gli alloggi e la programmazione.</p>
+                    <p>Il nostro team è presente durante l'evento per garantire che tutto funzioni senza intoppi, permettendo a te e ai tuoi ospiti di godervi appieno la celebrazione senza alcuno stress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENJOY секция -->
+    <section class="enjoy-section" id="enjoy">
+        <div class="enjoy-container">
+            <div class="enjoy-content">
+                <h2>Goditi il miglior <span>design e funzionalità</span> insieme</h2>
+                <p>Dacci l'opportunità di entrare nel tuo mondo, così possiamo condividere le nostre idee fin dal primo incontro conoscitivo</p>
+            </div>
+            <div class="enjoy-image">
+                <img src="images/index/enjoy.jpg" alt="Design elegante per matrimoni" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'">
+            </div>
+        </div>
+    </section>
+
+    <!-- START PLANNING секция -->
+    <section class="planning-section" id="planning">
+        <div class="planning-content">
+            <h2>Inizia la <span>pianificazione</span></h2>
+            <p>Lascia una richiesta e ti contatteremo entro 24 ore</p>
+            <a href="contact_it.html" class="cta">CONTATTACI</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-menu">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="index_it.html">Home</a></li>
+                        <li><a href="our-services_it.html">Servizi</a></li>
+                        <li><a href="live-painting_it.html">Pittura dal vivo</a></li>
+                        <li><a href="about_it.html">Chi siamo</a></li>
+                        <li><a href="contact_it.html">Contatti</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-logo-center">
+                    <div class="rotating-logo">
+                        <img src="images/footer_logo.png" alt="Wedding Italy Residence" class="logo-image">
+                        <svg class="rotating-text" viewBox="0 0 100 100">
+                            <defs>
+                                <path id="circle" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" />
+                            </defs>
+                            <text font-size="9" fill="#D4A574" letter-spacing="2.3">
+                                <textPath xlink:href="#circle" startOffset="0%">
+                                    ✦ WEDDING ✦ ITALY ✦ RESIDENCE
+                                </textPath>
+                            </text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>ORARI DI UFFICIO</h3>
+                    <div class="office-hours">
+                        <p><span class="days">Lunedì-Venerdì</span><br>9:00 - 17:00</p>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <p><a href="tel:+393420032178">+39 342 003 2178</a></p>
+                        <p><a href="mailto:INFO@ETERNALMOMENTSSTUDIO.COM">INFO@ETERNALMOMENTSSTUDIO.COM</a></p>
+                    </div>
+                    
+                    <div class="footer-social-icons">
+                        <a href="https://uk.pinterest.com/ideas/italy-wedding-villas/899959421189/" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://www.instagram.com/eternalmomentsweddingplanner" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/anastasiiasamitaly" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/393420032178" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    
+                    <!-- Переключатель языков в футере - ИТАЛЬЯНСКАЯ ВЕРСИЯ -->
+                    <div class="footer-lang-switcher">
+                        <a href="index.html" aria-label="English">
+                            <img src="images/flags/en.png" alt="EN">
+                        </a>
+                        <a href="index_it.html" class="active" aria-label="Italiano">
+                            <img src="images/flags/it.png" alt="IT">
+                        </a>
+                        <a href="index_ru.html" aria-label="Русский">
+                            <img src="images/flags/ru.png" alt="RU">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="offices-compact">
+                <div class="office-compact" id="office1">
+                    <div class="office-compact-header" onclick="toggleOffice('office1')">
+                        <h4>Medio Oriente</h4>
+                        <div class="compact-toggle-btn"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="office-cities-compact">
+                        <span class="city-tag-compact">Abu Dhabi</span>
+                        <span class="city-tag-compact">Dubai</span>
+                        <span class="city-tag-compact">Riyadh</span>
+                        <span class="city-tag-compact">Doha</span>
+                    </div>
+                    <div class="office-details-compact">
+                        <p><i class="fas fa-phone"></i> Pavel <a href="tel:+971543683050">+971 54 368 3050</a></p>
+                    </div>
+                </div>
+
+                <div class="office-compact" id="office2">
+                    <div class="office-compact-header" onclick="toggleOffice('office2')">
+                        <h4>Russia ed Europa orientale</h4>
+                        <div class="compact-toggle-btn"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="office-cities-compact">
+                        <span class="city-tag-compact">Mosca</span>
+                        <span class="city-tag-compact">Erevan</span>
+                        <span class="city-tag-compact">Grozny</span>
+                        <span class="city-tag-compact">Baku</span>
+                    </div>
+                    <div class="office-details-compact">
+                        <p><i class="fas fa-phone"></i> Gennady <a href="tel:+79032042233">+7 903 204 22 33</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:gensam@yandex.ru">gensam@yandex.ru</a></p>
+                    </div>
+                </div>
+
+                <div class="office-compact" id="office3">
+                    <div class="office-compact-header" onclick="toggleOffice('office3')">
+                        <h4>Italia e Costa Azzurra</h4>
+                        <div class="compact-toggle-btn"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="office-cities-compact">
+                        <span class="city-tag-compact">Como</span>
+                        <span class="city-tag-compact">Milano</span>
+                        <span class="city-tag-compact">Monte Carlo</span>
+                        <span class="city-tag-compact">Nizza</span>
+                    </div>
+                    <div class="office-details-compact">
+                        <p><i class="fas fa-phone"></i> Anastasiia <a href="tel:+393420032178">+39 342 003 2178</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:anastasiia.samokhina@gmail.com">anastasiia.samokhina@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>WEDDING ITALY RESIDENCE - MILANO COMO ITALIA</p>
+                <p>CELLULARE <a href="tel:+393420032178">+39 342 0032178</a> - EMAIL <a href="mailto:INFO@ETERNALMOMENTSSTUDIO.COM">INFO@ETERNALMOMENTSSTUDIO.COM</a></p>
+                <p>P.I. 14609380960</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+            
+            setInterval(nextSlide, 5000);
+            
+            const menuContainer = document.querySelector('.menu-hover-container');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            
+            if ('ontouchstart' in window) {
+                menuContainer.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    dropdownMenu.classList.toggle('active');
+                });
+                
+                document.addEventListener('touchstart', function(e) {
+                    if (!e.target.closest('.menu-hover-container')) {
+                        dropdownMenu.classList.remove('active');
+                    }
+                });
+            }
+            
+            document.querySelectorAll('.dropdown-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    dropdownMenu.classList.remove('active');
+                });
+            });
+            
+            const galleryImages = [];
+            for (let i = 1; i <= 19; i++) {
+                galleryImages.push(`images/index/gallery-${i}.jpg`);
+            }
+            
+            const grid = document.getElementById('galleryGrid');
+            const modal = document.getElementById('galleryModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+            const modalPrev = document.getElementById('modalPrev');
+            const modalNext = document.getElementById('modalNext');
+            const modalCounter = document.getElementById('modalCounter');
+            
+            let currentImageIndex = 0;
+            
+            galleryImages.forEach((src, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `<img src="${src}" alt="Gallery image ${index + 1}" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'">`;
+                item.addEventListener('click', () => openModal(index));
+                grid.appendChild(item);
+            });
+            
+            function openModal(index) {
+                currentImageIndex = index;
+                updateModalImage();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            function updateModalImage() {
+                modalImage.src = galleryImages[currentImageIndex];
+                modalCounter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+            }
+            
+            function prevImage() {
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                updateModalImage();
+            }
+            
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                updateModalImage();
+            }
+            
+            modalClose.addEventListener('click', closeModal);
+            modalPrev.addEventListener('click', prevImage);
+            modalNext.addEventListener('click', nextImage);
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (!modal.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                }
+            });
+        });
+
+        function toggleOffice(officeId) {
+            const office = document.getElementById(officeId);
+            office.classList.toggle('active');
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    document.getElementById('dropdownMenu').classList.remove('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255,255,255,0.98)';
+                header.style.backdropFilter = 'blur(30px)';
+                header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
