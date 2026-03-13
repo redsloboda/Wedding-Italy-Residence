@@ -1637,27 +1637,77 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const menuContainer = document.querySelector('.menu-hover-container');
+            const hamburger = document.getElementById('hamburger');
             const dropdownMenu = document.getElementById('dropdownMenu');
+            const menuLinks = document.querySelectorAll('.dropdown-menu a');
             
-            if ('ontouchstart' in window) {
-                menuContainer.addEventListener('touchstart', function(e) {
-                    e.preventDefault();
+            // Открытие/закрытие меню при клике на гамбургер
+            if (hamburger) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
                     dropdownMenu.classList.toggle('active');
-                });
-                
-                document.addEventListener('touchstart', function(e) {
-                    if (!e.target.closest('.menu-hover-container')) {
-                        dropdownMenu.classList.remove('active');
+                    
+                    // Меняем стили для открытого меню
+                    if (dropdownMenu.classList.contains('active')) {
+                        dropdownMenu.style.opacity = '1';
+                        dropdownMenu.style.visibility = 'visible';
+                        dropdownMenu.style.transform = 'translateY(0)';
+                        dropdownMenu.style.pointerEvents = 'all';
+                    } else {
+                        dropdownMenu.style.opacity = '0';
+                        dropdownMenu.style.visibility = 'hidden';
+                        dropdownMenu.style.transform = 'translateY(-10px)';
+                        dropdownMenu.style.pointerEvents = 'none';
                     }
                 });
             }
             
-            document.querySelectorAll('.dropdown-menu a').forEach(link => {
-                link.addEventListener('click', function() {
+            // Обработка кликов по ссылкам в меню
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Закрываем меню
                     dropdownMenu.classList.remove('active');
+                    if (hamburger) hamburger.classList.remove('active');
+                    
+                    dropdownMenu.style.opacity = '0';
+                    dropdownMenu.style.visibility = 'hidden';
+                    dropdownMenu.style.transform = 'translateY(-10px)';
+                    dropdownMenu.style.pointerEvents = 'none';
+                    
+                    // НЕ вызываем e.preventDefault() - пусть браузер сам переходит по ссылке
                 });
             });
+            
+            // Закрытие меню при клике вне его
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-hover-container') && dropdownMenu.classList.contains('active')) {
+                    dropdownMenu.classList.remove('active');
+                    if (hamburger) hamburger.classList.remove('active');
+                    
+                    dropdownMenu.style.opacity = '0';
+                    dropdownMenu.style.visibility = 'hidden';
+                    dropdownMenu.style.transform = 'translateY(-10px)';
+                    dropdownMenu.style.pointerEvents = 'none';
+                }
+            });
+
+            // FAQ аккордеон (только для contact_it.html, на других страницах можно оставить)
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+
+            // Обработка формы (только для contact_it.html)
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Grazie per il tuo messaggio! Ti contatteremo entro 24 ore.');
+                    form.reset();
+                });
+            }
         });
 
         function toggleOffice(officeId) {
@@ -1665,7 +1715,6 @@
             office.classList.toggle('active');
         }
 
-        // Плавный скролл для якорных ссылок
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1682,7 +1731,17 @@
                         behavior: 'smooth'
                     });
                     
-                    document.getElementById('dropdownMenu').classList.remove('active');
+                    // Закрываем меню если открыто
+                    const dropdownMenu = document.getElementById('dropdownMenu');
+                    const hamburger = document.getElementById('hamburger');
+                    if (dropdownMenu) {
+                        dropdownMenu.classList.remove('active');
+                        dropdownMenu.style.opacity = '0';
+                        dropdownMenu.style.visibility = 'hidden';
+                        dropdownMenu.style.transform = 'translateY(-10px)';
+                        dropdownMenu.style.pointerEvents = 'none';
+                    }
+                    if (hamburger) hamburger.classList.remove('active');
                 }
             });
         });
@@ -1700,6 +1759,6 @@
                 header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.05)';
             }
         });
-    </script>
+        </script>
 </body>
 </html>
